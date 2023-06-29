@@ -1,7 +1,7 @@
 const path = require("path")
 const TerserWebpackPlugin = require("terser-webpack-plugin")
 
-export default {
+module.exports = {
     mode: "development",
     target: [ "web", "es5" ],
     entry: "./src/index.ts",
