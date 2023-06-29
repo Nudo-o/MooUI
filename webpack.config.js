@@ -1,10 +1,5 @@
-import path from "path"
-import { fileURLToPath } from "url"
-import HTMLWebpackPlugin from "html-webpack-plugin"
-import TerserWebpackPlugin  from "terser-webpack-plugin"
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const path = require("path")
+const TerserWebpackPlugin = require("terser-webpack-plugin")
 
 export default {
     mode: "development",
@@ -19,16 +14,11 @@ export default {
         port: 4000,
         open: true,
         hot: true,
-        watchFiles: [ "public/*.html", "src/*.*" ]
+        watchFiles: [ "src/*.*" ]
     },
     optimization: {
         minimizer: [ new TerserWebpackPlugin() ]
     },
-    plugins: [
-        new HTMLWebpackPlugin({
-            template: "./public/index.html"
-        })
-    ],
     resolve: {
         extensions: [ ".ts", ".js" ]
     },
