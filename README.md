@@ -35,6 +35,11 @@ The method takes an object as an argument. The object includes toggleKey and app
 ToggleKey must have at least 1 property type from `KeyboardEvent` (code/keyCode/key) so that when you press the key specified in toggleKey, the menu opens on this key.<br>
 AppendNode accepts any NodeElement.
 
+# How to control menu
+To open menu column, you need to right-click on header (Where the menu name is).<br>
+To move the menu, you need to hold down the header with the left mouse button and move it around the screen. (Beta)<br>
+To make a Checkbox switch, you need to click on it with the left mouse button, and to read the description of the switch, you need to hover the mouse cursor over its name.
+
 # How to add columns to menu and togglers
 ```JS
 const playersVisual = new MooUI.Column()
