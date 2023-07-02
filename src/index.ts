@@ -1,9 +1,9 @@
-import columnsTemplate from "./configs/templates/columns.ts"
-import ICreateMenu from "./interfaces/ICreateMenu.ts"
-import Menu from "./menu/Menu.ts"
-import Column from "./menu/column/Column.ts"
-import Checkbox from "./menu/column/models/Checkbox.ts"
-import OptionCheckbox from "./menu/column/models/option/OptionCheckbox.ts"
+import columnsTemplate from "./configs/templates/columns"
+import ICreateMenu from "./interfaces/ICreateMenu"
+import Menu from "./menu/Menu"
+import Column from "./menu/column/Column"
+import Checkbox from "./menu/column/models/Checkbox"
+import OptionCheckbox from "./menu/column/models/option/OptionCheckbox"
 
 const MooUI = (function() {
     this.list = new Map()
