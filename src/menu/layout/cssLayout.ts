@@ -60,6 +60,14 @@ const cssLayout = `
     margin-top: -2.5px;
 }
 
+.options-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.options-container::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
 .ui-model {
     display: flex;
     align-items: center;
@@ -174,7 +182,6 @@ const cssLayout = `
     align-items: center;
     justify-content: center;
 }
-
 `
 
 export default cssLayout
