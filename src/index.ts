@@ -4,6 +4,8 @@ import Menu from "./menu/Menu"
 import Column from "./menu/column/Column"
 import Checkbox from "./menu/column/models/Checkbox"
 import OptionCheckbox from "./menu/column/models/option/OptionCheckbox"
+import OptionIColor from "./menu/column/models/option/OptionIColor"
+import OptionIText from "./menu/column/models/option/OptionIText"
 
 const MooUI = (function() {
     this.list = new Map()
@@ -11,6 +13,8 @@ const MooUI = (function() {
     this.Column = Column
     this.Checkbox = Checkbox
     this.OptionCheckbox = OptionCheckbox
+    this.OptionIText = OptionIText
+    this.OptionIColor = OptionIColor
 
     this.createMenu = function({
         toggleKey,
@@ -67,6 +71,7 @@ const MooUI = (function() {
 
 declare namespace window {
     let MooUI: any
+    let menu: any
 }
 
 window.MooUI = MooUI
