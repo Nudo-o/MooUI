@@ -7,6 +7,8 @@ class Checkbox extends UIModel {
     
     public element: HTMLElement
 
+    private events: Map<string, Map<number, Function>>
+
     constructor({
         key,
         name, 
@@ -25,12 +27,22 @@ class Checkbox extends UIModel {
         this.isDisabled = isDisabled
 
         this.element = element
+
+        this.events = new Map([
+            [ "click", new Map() ]
+        ])
     }
 
     private get html(): string {
         return `
         <span class="ui-model-text" title="${this.description}">${this.name}</span>
         `
+    }
+
+    public on(event: string, callback: Function) {
+        const eventMap: Map<number, Function> = this.events.get(event)
+
+        eventMap.set(eventMap.size + 1, callback)
     }
 
     public setActive(activeState: boolean): void {
@@ -47,6 +59,12 @@ class Checkbox extends UIModel {
     
     private toggle(): boolean {
         this.setActive(!this.isActive)
+
+        const eventMap: Map<number, Function> = this.events.get("click")
+
+        eventMap.forEach((callback: Function) => {
+            callback(this.isActive, this.element)
+        })
 
         return this.isActive
     }
@@ -84,7 +102,12 @@ class Checkbox extends UIModel {
         this.element.classList.remove(activeClass(!this.isActive))
         this.element.classList.add(activeClass(this.isActive))
 
-        this.isDisabled && this.element.classList.add("disabled")
+        if (this.isDisabled) {
+            this.element.classList.add("disabled")
+        } else {
+            this.element.classList.remove("disabled")
+        }
+        
         this.options.size && this.element.classList.add("has-options")
     }
 
