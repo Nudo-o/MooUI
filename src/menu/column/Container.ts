@@ -1,7 +1,5 @@
 import columnsTemplate from "../../configs/templates/columns"
 import StyleSystem from "./StyleSystem"
-import Checkbox from "./models/Checkbox"
-import UIModel from "./models/UIModel"
 
 class Container extends StyleSystem {
     public element: HTMLElement
@@ -82,6 +80,13 @@ class Container extends StyleSystem {
             model.textColor = this.textColor
 
             model._updateStyles("intial", "auto")
+
+            if (model.options.size) {
+                model.optionsContainer.bgColor = this.bgColor
+                model.optionsContainer.textColor = this.textColor
+                
+                model.optionsContainer.updateStyles()
+            }
         })
     }
 
