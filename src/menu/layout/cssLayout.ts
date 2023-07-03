@@ -56,7 +56,6 @@ const cssLayout = `
     box-sizing: border-box;
     padding: 2.5px;
     gap: 2.5px;
-    overflow-y: auto;
     margin-top: -2.5px;
 }
 
