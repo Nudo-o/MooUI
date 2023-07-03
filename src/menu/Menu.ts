@@ -17,6 +17,8 @@ class Menu {
     
     public columns: Map<number, Column>
 
+    private modelsActionEvents: Map<number, Function>
+
     constructor({ 
         id, 
         config, 
@@ -38,6 +40,8 @@ class Menu {
         this.columns = new Map()
 
         this.isMenu = true
+
+        this.modelsActionEvents = new Map()
 
         this.append()
 
@@ -80,10 +84,24 @@ class Menu {
         return this.getModel(key)?.isActive
     }
 
+    public getModelValue(key: string): any {
+        return this.getModel(key)?.value
+    }
+
     public setModelActive(key: string, state: boolean): any {
         const model = this.getModel(key)
 
-        model && model.setActive(state)
+        typeof model?.isActive !== 'undefined' && model.setActive(state)
+    }
+
+    public setModelValue(key: string, value: boolean): any {
+        const model = this.getModel(key)
+
+        typeof model?.value !== 'undefined' && model.setValue(value)
+    }
+
+    public onModelsAction(callback: Function): void {
+        this.modelsActionEvents.set(this.modelsActionEvents.size + 1, callback)
     }
 
     public add(...columns: Column[]): void {
@@ -98,6 +116,30 @@ class Menu {
             this.wrapper.appendChild(column.element)
 
             this.columns.set(column.id, column)
+
+            column.container.models.forEach((model: any) => {
+                model.on("click", (state: boolean) => {
+                    this.modelsActionEvents.forEach((callback: Function) => {
+                        callback(model.key, state, model)
+                    })
+                })
+
+                if (model.options.size) {
+                    model.options.forEach((option: any) => {
+                        for (const event of [ "click", "change", "input" ]) {
+                            if (option.events.has(event)) {
+                                option.on(event, (value: unknown) => {
+                                    this.modelsActionEvents.forEach((callback: Function) => {
+                                        callback(option.key, value, option)
+                                    })
+                                })
+                            }
+                        }
+                    })
+                }
+
+                return
+            })
 
             console.log(`Menu "${column.header.text}" has been added`)
         }
