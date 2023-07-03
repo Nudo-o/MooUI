@@ -17,7 +17,7 @@ class Option extends StyleSystem {
         description, 
         node
     }: IOption) {
-        const config = columnsTemplate.column
+        const config: any = columnsTemplate.column
 
         super(node, config.container.colors)
         
