@@ -1,7 +1,7 @@
 import IOption from "../IOption"
 
 interface IOptionCheckbox extends IOption {
-    isActive?: boolean,
+    isActive?: boolean
     isDisabled?: boolean
 }
 
