@@ -2,6 +2,7 @@ import columnsTemplate from "../../../configs/templates/columns"
 import IUIModel from "../../../interfaces/IUIModel"
 import StyleSystem from "../StyleSystem"
 import Option from "./option/Option"
+import OptionsContainer from "./option/OptionsContainer"
 
 class UIModel extends StyleSystem {
     public key: IUIModel["key"]
@@ -12,6 +13,8 @@ class UIModel extends StyleSystem {
     public config: any
 
     public parent: HTMLElement
+    
+    public optionsContainer: OptionsContainer
 
     constructor({ 
         key, 
@@ -20,7 +23,7 @@ class UIModel extends StyleSystem {
         options,
         node
     }: IUIModel) {
-        const config = columnsTemplate.column
+        const config: any = columnsTemplate.column
 
         super(node, config.container.colors)
         
@@ -41,11 +44,11 @@ class UIModel extends StyleSystem {
     }
 
     public showOptions(): void {
-
+        this.optionsContainer.show()
     }
 
     public hideOptions(): void {
-        
+        this.optionsContainer.hide()
     }
 
     public toggleOptions(): void {
@@ -65,9 +68,17 @@ class UIModel extends StyleSystem {
     public initOptions(): void {
         this._updateStyles("initial", "auto")
 
-        this.options.forEach((option) => {
+        if (this.options.size) {
+            this.optionsContainer = new OptionsContainer(this.node, this.key)
+        }
 
+        this.options.forEach((option) => {
+            this.optionsContainer.add(option)
         })
+
+        if (this.options.size) {
+            this.optionsContainer.build()
+        }
     }
 }
 
