@@ -1,7 +1,7 @@
 import IUIModel from "../IUIModel"
 
 interface ICheckbox extends IUIModel {
-    isActive?: boolean,
+    isActive?: boolean
     isDisabled?: boolean
 }
 
