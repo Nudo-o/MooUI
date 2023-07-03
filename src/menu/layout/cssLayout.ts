@@ -3,11 +3,68 @@ const cssLayout = `
     z-index: 99999999;
 }
 
+.ui-option-input-text {
+    width: initial;
+    height: initial;
+    background: none;
+    border: none;
+    outline: 0;
+    padding: 0;
+    color: currentColor;
+    font-size: 14px;
+}
+
+.ui-option-input-color {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 22.5px !important;
+}
+
+.ui-option-input-color::-webkit-color-swatch-wrapper {
+    padding: 0;    
+}
+
+.ui-option-input-color::-webkit-color-swatch {
+    border: none;
+}
+
+.input-color-model {
+    padding: 0 !important;
+}
+
+.input-color-model::before {
+    content: attr(data-name);
+    position: absolute;
+    color: currentColor;
+    pointer-events: none;
+    left: 6.5px;
+}
+
+.input-text-model, .input-color-model {
+    cursor: default !important;
+}
+
+.options-container {
+    border: 1.5px solid;
+    border-top: none;
+    box-sizing: border-box;
+    padding: 2.5px;
+    gap: 2.5px;
+    overflow-y: auto;
+    margin-top: -2.5px;
+}
+
 .ui-model {
     display: flex;
     align-items: center;
     width: initial;
-    height: auto;
+    height: 20px !important;
     cursor: pointer;
     border: 1.5px solid;
     font-size: 16px;
@@ -32,7 +89,8 @@ const cssLayout = `
 }
 
 .ui-model.active, 
-.ui-model.active > .ui-model-text, 
+.ui-model.active > .ui-model-text,
+.ui-model.active > .ui-option-text,
 .ui-model.active > .ui-model.has-options::before {
     filter: invert(0);
 }
@@ -41,7 +99,8 @@ const cssLayout = `
     filter: invert(.075);
 }
 
-.ui-model.inactive > .ui-model-text, 
+.ui-model.inactive > .ui-model-text,
+.ui-model.inactive > .ui-option-text,
 .ui-model.inactive.has-options::before {
     filter: invert(.3);
 }
