@@ -30,6 +30,13 @@ const columnsTemplate: IColumnsTemplate = {
                 text: "rgba(255, 255, 255, 1)"
             }
         },
+        optionsContainer: {
+            showDisplay: "flex",
+            colors: {
+                main: "rgba(26, 26, 26, 1)",
+                text: "rgba(255, 255, 255, 1)"
+            }
+        },
         checkbox: {
             toggleKey: 0,
             openOptionsKey: 2
