@@ -47,10 +47,58 @@ const playersVisual = new MooUI.Column()
 playersVisual.setHeaderText("Players")
 
 playersVisual.add(new MooUI.Checkbox({
-    key: "tracers", // An individual identifier for getting the properties of this model in the future
-    name: "Tracers", // Name of model
-    description: "Draws tracers to players", // Description of model
-    isActive: false // The initial state of the model. False - disabled. True - enabled
+    key: "key of toggler", // An individual identifier for getting the properties of this model in the future
+    name: "name of toggler", // Name of model
+    description: description of toggler", // Description of model
+    isActive: default toggler state true/false, // The initial state of the model. False - disabled. True - enabled,
+    isDisabled: false/true // Toggler will no longer switch, but options can also open and close. It is not necessary to specify
+}))
+
+menu.add(playersVisual)
+```
+
+# How to add options to toggler
+```JS
+const playersVisual = new MooUI.Column()
+
+playersVisual.setHeaderText("Players")
+
+playersVisual.add(new MooUI.Checkbox({
+    key: "key of toggler", // An individual identifier for getting the properties of this model in the future
+    name: "name of toggler", // Name of model
+    description: "description of toggler", // Description of model. It is shown when the mouse is hovered over the toggler
+    isActive: "default toggler state true/false", // The initial state of the model. False - disabled. True - enabled,
+    isDisabled: "false/true", // Toggler will no longer switch, but options can also open and close. It is not necessary to specify
+    options: [
+        new MooUI.OptionCheckbox({ // All custom properties are the same as creating the main toggler above
+            key: "key",
+            name: "name",
+            description: "description",
+            isActive: false,
+            isDisabled: false
+        }),
+        new MooUI.OptionIText({
+            key: "key",
+            name: "name",
+            description: "description",
+            value: "#ffffff" // Default text
+        }),
+        new MooUI.OptionIRange({
+            key: "key",
+            name: "name",
+            description: "description",
+            min: 0, // Minimum value
+            max: 2, // Maximum value
+            value: 2, // Default value
+            fixValue: 1 // Number of digits after the decimal point
+        }),
+        new MooUI.OptionIColor({
+            key: "key",
+            name: "name",
+            description: "description",
+            value: "#ffffff" // Default color
+        })
+    ]
 }))
 
 menu.add(playersVisual)
@@ -94,7 +142,21 @@ renderMenu.add(new MooUI.Checkbox({
     key: "tracers",
     name: "Tracers",
     description: "Draws tracers to players",
-    isActive: true
+    isActive: false,
+    options: [
+        new MooUI.OptionCheckbox({
+            key: "tracers-arrows",
+            name: "Arrows",
+            description: "Draws arrows instead of lines",
+            isActive: true
+        }),
+        new MooUI.OptionIColor({
+            key: "tracers-color",
+            name: "Color",
+            description: "Tracers color",
+            value: "#ffffff"
+        })
+    ]
 }))
 
 menu.add(playersVisual, renderMenu)
@@ -112,5 +174,12 @@ setInterval(() => {
     if (menu.getModelActive("tracers")) {
         console.log("Tracers is active")
     }
+
+    if (menu.getModelActive("tracers-arrows")) {
+        console.log("Tracers Arrows is active")
+    }
+
+    // Get value of input option:
+    console.log("Tracers color:", "menu.getModelValue("tracers-color"))
 }, 1000)
 ```
