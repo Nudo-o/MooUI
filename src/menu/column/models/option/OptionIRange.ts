@@ -131,6 +131,8 @@ class OptionIRange extends Option {
             const allElements = Object.values(document.querySelectorAll(".menu-holder *"))
 
             allElements.forEach((element: HTMLElement) => {
+                if (element.tagName === "INPUT") return
+                
                 if (element.style.pointerEvents === "none" || element.classList.contains("no-pointer")) {
                     element.style.pointerEvents = "none !important"
                 }
@@ -149,6 +151,8 @@ class OptionIRange extends Option {
             const allElements = Object.values(document.querySelectorAll(".menu-holder *"))
 
             allElements.forEach((element: HTMLElement) => {
+                if (element.tagName === "INPUT") return
+                
                 if (/important/.test(element.style.pointerEvents)) return
 
                 element.style.pointerEvents = "all"
