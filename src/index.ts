@@ -5,6 +5,7 @@ import Column from "./menu/column/Column"
 import Checkbox from "./menu/column/models/Checkbox"
 import OptionCheckbox from "./menu/column/models/option/OptionCheckbox"
 import OptionIColor from "./menu/column/models/option/OptionIColor"
+import OptionIRange from "./menu/column/models/option/OptionIRange"
 import OptionIText from "./menu/column/models/option/OptionIText"
 
 const MooUI = (function() {
