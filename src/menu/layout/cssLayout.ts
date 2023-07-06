@@ -3,6 +3,45 @@ const cssLayout = `
     z-index: 99999999;
 }
 
+.ui-input-range-holder {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5px;
+    cursor: default;
+}
+
+.ui-input-range-info {
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    cursor: default;
+}
+
+.ui-option-input-range {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    height: 3px;
+    width: 100%;
+    filter: invert(.2);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-option-input-range::-webkit-slider-runnable-track {
+    display: none;
+    height: 0;
+}
+  
+.ui-option-input-range::-moz-range-track {
+    display: none;
+    height: 0;
+}
+
 .ui-option-input-text {
     width: initial;
     height: initial;
