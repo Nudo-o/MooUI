@@ -120,7 +120,7 @@ class Menu {
             column.container.models.forEach((model: any) => {
                 model.on("click", (state: boolean) => {
                     this.modelsActionEvents.forEach((callback: Function) => {
-                        callback(model.key, state, model)
+                        callback(model.key, state, "click", model)
                     })
                 })
 
@@ -130,7 +130,7 @@ class Menu {
                             if (option.events.has(event)) {
                                 option.on(event, (value: unknown) => {
                                     this.modelsActionEvents.forEach((callback: Function) => {
-                                        callback(option.key, value, option)
+                                        callback(option.key, value, event, option)
                                     })
                                 })
                             }
