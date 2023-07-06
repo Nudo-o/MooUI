@@ -83,6 +83,7 @@ const cssLayout = `
     color: currentColor;
     pointer-events: none;
     left: 6.5px;
+    mix-blend-mode: difference;
 }
 
 .input-text-model, .input-color-model {
