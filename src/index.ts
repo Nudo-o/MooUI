@@ -15,6 +15,7 @@ const MooUI = (function() {
     this.OptionCheckbox = OptionCheckbox
     this.OptionIText = OptionIText
     this.OptionIColor = OptionIColor
+    this.OptionIRange = OptionIRange
 
     this.createMenu = function({
         toggleKey,
