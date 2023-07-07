@@ -27,7 +27,7 @@ const menu = MooUI.createMenu({
         key: "Escape",
         keyCode: 27
     },
-    appendNode: document.getElementById("gameUI")
+    appendNode: document.body
 })
 ```
 First of all, we create the menu itself by calling the MooUI method called createMenu.<br>
