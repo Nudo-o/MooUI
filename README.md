@@ -180,6 +180,6 @@ setInterval(() => {
     }
 
     // Get value of input option:
-    console.log("Tracers color:", "menu.getModelValue("tracers-color"))
+    console.log("Tracers color:", menu.getModelValue("tracers-color"))
 }, 1000)
 ```
