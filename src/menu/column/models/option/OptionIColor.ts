@@ -39,7 +39,7 @@ class OptionIColor extends Option {
 
     private get html(): string {
         return `
-        <input type="color" class="ui-option-input-color" title="${this.description}">
+        <input type="color" class="ui-option-input-color">
         `
     }
 
@@ -103,6 +103,8 @@ class OptionIColor extends Option {
         
         this.updateClasses()
         this.initEvents()
+
+        this.element.title = `${this.description}`
     }
 }
 
