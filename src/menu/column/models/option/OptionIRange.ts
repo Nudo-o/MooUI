@@ -127,36 +127,12 @@ class OptionIRange extends Option {
 
         this.element.addEventListener("mousedown", (event) => {
             isPressed = true
-
-            const allElements = Object.values(document.querySelectorAll(".menu-holder *"))
-
-            allElements.forEach((element: HTMLElement) => {
-                if (element.tagName === "INPUT") return
-                
-                if (element.style.pointerEvents === "none" || element.classList.contains("no-pointer")) {
-                    element.style.pointerEvents = "none !important"
-                }
-
-                if (/important/.test(element.style.pointerEvents)) return
-
-                element.style.pointerEvents = "none"
-            })
         })
 
         window.addEventListener("mouseup", (event) => {
             if (!isPressed) return
 
             isPressed = false
-
-            const allElements = Object.values(document.querySelectorAll(".menu-holder *"))
-
-            allElements.forEach((element: HTMLElement) => {
-                if (element.tagName === "INPUT") return
-                
-                if (/important/.test(element.style.pointerEvents)) return
-
-                element.style.pointerEvents = "all"
-            })
         })
 
         menuHolder.addEventListener("mousemove", (event) => {
