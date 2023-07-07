@@ -48,7 +48,7 @@ class OptionIRange extends Option {
 
     private get html(): string {
         return `
-        <div class="ui-input-range-holder" title="${this.description}">
+        <div class="ui-input-range-holder">
             <div class="ui-input-range-info">
                 <span>${this.name}</span>
                 <span id="${this.key}_value">${this.value}</span>
@@ -195,6 +195,8 @@ class OptionIRange extends Option {
         
         this.updateClasses()
         this.initEvents()
+
+        this.element.title = `${this.description}`
     }
 }
 
