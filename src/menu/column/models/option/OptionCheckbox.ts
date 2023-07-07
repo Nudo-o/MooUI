@@ -34,7 +34,7 @@ class OptionCheckbox extends Option {
 
     private get html(): string {
         return `
-        <span class="ui-option-text" title="${this.description}">${this.name}</span>
+        <span class="ui-option-text">${this.name}</span>
         `
     }
 
@@ -114,6 +114,8 @@ class OptionCheckbox extends Option {
         this.element.insertAdjacentHTML("beforeend", this.html)
 
         this.initEvents()
+
+        this.element.title = `${this.description}`
     }
 }
 
