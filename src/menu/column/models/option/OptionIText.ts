@@ -1,7 +1,6 @@
 import IOptionIText from "../../../../interfaces/IOptionIText"
 import Option from "./Option"
 
-
 class OptionIText extends Option {
     public value: IOptionIText["value"]
     public isDisabled: IOptionIText["isDisabled"]
@@ -37,7 +36,7 @@ class OptionIText extends Option {
 
     private get html(): string {
         return `
-        <input class="ui-option-input-text" title="${this.description}" placeholder="${this.name}">
+        <input class="ui-option-input-text" placeholder="${this.name}">
         `
     }
 
@@ -100,6 +99,8 @@ class OptionIText extends Option {
 
         this.updateClasses()
         this.initEvents()
+
+        this.element.title = `${this.description}`
     }
 }
 
