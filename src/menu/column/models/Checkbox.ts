@@ -35,7 +35,7 @@ class Checkbox extends UIModel {
 
     private get html(): string {
         return `
-        <span class="ui-model-text" title="${this.description}">${this.name}</span>
+        <span class="ui-model-text">${this.name}</span>
         `
     }
 
@@ -122,6 +122,8 @@ class Checkbox extends UIModel {
 
         this.initOptions()
         this.initEvents()
+
+        this.element.title = `${this.description}`
     }
 }
 
